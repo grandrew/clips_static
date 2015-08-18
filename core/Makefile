@@ -36,7 +36,8 @@ OBJS = agenda.o analysis.o argacces.o bload.o bmathfun.o bsave.o \
 	    -Wstrict-prototypes -Waggregate-return -Wno-implicit $<
 
 clips : $(OBJS)
-	/usr/local/musl/bin/musl-gcc -static -o clips $(OBJS) /usr/lib/gcc/arm-linux-gnueabihf/4.8/libgcc.a ./libc.a ./libm.a
+	#/usr/local/musl/bin/musl-gcc -static -o clips $(OBJS) ./libc.a ./libm.a
+	/usr/local/musl/bin/musl-gcc -static -o clips $(OBJS)
 
 # Dependencies generated using "gcc -MM *.c"
 
