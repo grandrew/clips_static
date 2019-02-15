@@ -30,14 +30,14 @@ OBJS = agenda.o analysis.o argacces.o bload.o bmathfun.o bsave.o \
  	tmpltpsr.o tmpltrhs.o tmpltutl.o userdata.o userfunctions.o utility.o watch.o
 
 .c.o :
-	/usr/local/musl/bin/musl-gcc -c -O3 -DLINUX=1 -DALLOW_ENVIRONMENT_GLOBALS=1 -Wall -Wundef \
+	musl-gcc -c -O3 -DLINUX=1 -DALLOW_ENVIRONMENT_GLOBALS=1 -Wall -Wundef \
 	    -Wpointer-arith -Wshadow -Winline -Wmissing-declarations \
 	    -Wredundant-decls -Wmissing-prototypes -Wnested-externs \
 	    -Wstrict-prototypes -Waggregate-return -Wno-implicit $<
 
 clips : $(OBJS)
 	#/usr/local/musl/bin/musl-gcc -static -o clips $(OBJS) ./libc.a ./libm.a
-	/usr/local/musl/bin/musl-gcc -static -o clips $(OBJS)
+	musl-gcc -static -o clips $(OBJS)
 
 # Dependencies generated using "gcc -MM *.c"
 
